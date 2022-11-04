@@ -1,0 +1,26 @@
+/*
+Breakpoints
+*/
+$breakpoints: (
+  "extra-small": 370px,
+  "small": 595px,
+  "medium": 768px,
+  "large": 1080px,
+) !default;
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+#quote-box {
+  width: 300px;
+  @include respond-to("medium") {
+    width: 450px;
+  }
+  @include respond-to("large") {
+    width: 550px;
+  }
+}
